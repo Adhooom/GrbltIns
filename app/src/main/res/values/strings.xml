@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Grblt Ins</string>
+    //form label strings
+    <string name="report">تقرير فحص السلامه</string>
+    <string name="wayname">على طريق</string>
+    <string name="waynum">طريق رقم</string>
+    <string-array name="waynumbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string name="engname">القائم بالمرور</string>
+    <string name="visit_date">تاريخ التفتيش</string>
+    <string name="dateform">DD/MM/YYYY</string>
+    <string name="prodetails">تفاصيل عامه عن المشروع</string>
+    <string name="area">المنطقه التابع لها </string>
+    <string-array name="area">
+        <item>مركزيه</item>
+        <item>فرعيه</item>
+    </string-array>
+    <string name="category">تصنيف الطريق</string>
+    <string-array name="roads">
+        <item>زراعى</item>
+        <item>صحراوى</item>
+        <item>ساحلى</item>
+    </string-array>
+    <string name="length">طول الطريق</string>
+    <string name="km">كم</string>
+    <string name="importance">أهميه الطريق</string>
+    <string name="explanation">وصف الطريق</string>
+    <string name="floorsigin">حاله العلامات الارضيه</string>
+    <string-array name="statue">
+        <item>سيئه</item>
+        <item>جيده</item>
+        <item>ممتازه</item>
+    </string-array>
+    <string name="uppersigin">حاله العلامات العلويه</string>
+    <string name="roaddata">بيانات عن الطريق</string>
+    <string name="speed1">السرعه التشغيليه</string>
+    <string name="speed2">السرعه التصميميه</string>
+    <string name="kmh">كم/ساعه</string>
+    <string name="traficreport">تقرير الحصر المرورى</string>
+    <string name="progressoperation">العمليات القائمه</string>
+    <string name="accedientnumb">عدد الحوادث</string>
+    <string name="accident">حادثه</string>
+    <string name="blackreport">تقرير النقط السوداء</string>
+    <string name="kmlocation">الموقع الكيلوميترى</string>
+    <string name="acciedentnum">عدد الحوادث</string>
+    <string name="killernum">عددالقتلى</string>
+    <string name="injurnum">عددالجرحى</string>
+    <string name="afterpass">بعد المرور على الطريق</string>
+    <string name="first">أولا التصميم الهندسى للطريق</string>
+</resources>
