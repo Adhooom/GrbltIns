@@ -47,7 +47,7 @@
     <string name="accedientnumb">عدد الحوادث</string>
     <string name="accident">حادثه</string>
     <string name="blackreport">تقرير النقط السوداء</string>
-    <string name="kmlocation">الموقع الكيلوميترى</string>
+    <string name="kmlocation">الموقع الكيلومترى</string>
     <string name="acciedentnum">عدد الحوادث</string>
     <string name="killernum">عددالقتلى</string>
     <string name="injurnum">عددالجرحى</string>

@@ -29,11 +29,16 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     Spinner newInspectionRoadNumSpinner;
     ImageView reportCardDate;
     TextView reportCardDateText;
-    //project details
+    //details card elements
+    LinearLayout mNewInspectionDetailsCardLinearLayout;
+    ImageView detailsCardArrow;
     Spinner newInspectionAreaSpinner;
     Spinner newInspectionRoadTypeSpinner;
     Spinner newInspectionFloorSignSpinner;
     Spinner newInspectionUpperSignSpinner;
+    //information card elements
+    LinearLayout mNewInspectionInformationCardLinearLayout;
+    ImageView informationCardArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +54,22 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         reportCardArrow = findViewById(R.id.new_inspection_report_card_arrow);
         newInspectionRoadNumSpinner = findViewById(R.id.new_inspection_spinner_way_num);
         reportCardDateText = findViewById(R.id.new_inspection_report_card_date_tv);
+        reportCardArrow.setOnClickListener(this);
         //second card
+        mNewInspectionDetailsCardLinearLayout=findViewById(R.id.new_inspection_details_card_content_layout);
+        detailsCardArrow = findViewById(R.id.new_inspection_details_card_arrow);
         newInspectionAreaSpinner = findViewById(R.id.new_inspection_spinner_area);
         newInspectionRoadTypeSpinner = findViewById(R.id.new_inspection_spinner_road_taype);
         newInspectionFloorSignSpinner = findViewById(R.id.new_inspection_spinner_floor_sign_statue);
         newInspectionUpperSignSpinner = findViewById(R.id.new_inspection_spinner_upper_sign_statue);
 
-        /**Ali Ussama Update*/
         reportCardDate = findViewById(R.id.new_inspection_report_card_date_iv);
         reportCardDate.setOnClickListener(this);
-        /**Ali Ussama Update*/
-
-        reportCardArrow.setOnClickListener(this);
+        detailsCardArrow.setOnClickListener(this);
+        //third card
+        mNewInspectionInformationCardLinearLayout=findViewById(R.id.new_inspection_information_card_content_layout);
+        informationCardArrow=findViewById(R.id.new_inspection_information_card_arrow);
+        informationCardArrow.setOnClickListener(this);
         initSpinnersDialog();
     }
 
@@ -68,8 +77,6 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.new_inspection_report_card_arrow:
-                try {
-                    /**Ali Ussama*/
 //                    ViewGroup.LayoutParams params = newInspectionReportCard.getLayoutParams();
 //                    Log.i("height", String.valueOf(params.height));
 //                    if (params.height != ViewGroup.LayoutParams.WRAP_CONTENT) {
@@ -81,23 +88,18 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
 //                        params.height = 100;
 //                        newInspectionReportCard.setLayoutParams(params);
 //                    }
-
-                    if (mNewInspectionReportCardLinearLayout.getVisibility() == View.VISIBLE) {
-                        mNewInspectionReportCardLinearLayout.setVisibility(View.GONE);
-                    } else if (mNewInspectionReportCardLinearLayout.getVisibility() == View.GONE) {
-                        mNewInspectionReportCardLinearLayout.setVisibility(View.VISIBLE);
-                    }
-                    /**Ali Ussama*/
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    arrowFunction(mNewInspectionReportCardLinearLayout,reportCardArrow);
                 break;
+
             case R.id.new_inspection_report_card_date_iv:
-                /**Ali Ussama Update*/
-                initDialog();
-                /**Ali Ussama Update*/
+                dateDialog();
                 break;
+
+            case R.id.new_inspection_details_card_arrow:
+                arrowFunction(mNewInspectionDetailsCardLinearLayout,detailsCardArrow);
+            case R.id.new_inspection_information_card_arrow:
+                arrowFunction(mNewInspectionInformationCardLinearLayout,informationCardArrow);
+
 
         }
     }
@@ -106,7 +108,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
      * Ali Ussama Update
      */
 
-    private void initDialog() {
+    private void dateDialog() {
         try {
             final Calendar myCalendar = Calendar.getInstance();
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -156,6 +158,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
             ArrayAdapter<CharSequence> statue = ArrayAdapter.createFromResource(this, R.array.statue,
                     android.R.layout.simple_spinner_item);
             statue.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
             newInspectionFloorSignSpinner.setAdapter(statue);
             newInspectionUpperSignSpinner.setAdapter(statue);
 
@@ -165,5 +168,13 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         }
 
     }
-
+    private void arrowFunction(LinearLayout linearLayout , ImageView imageView){
+        if (linearLayout.getVisibility() == View.GONE) {
+            linearLayout.setVisibility(View.VISIBLE);
+            imageView.setImageResource(R.drawable.collaps);
+        } else if (linearLayout.getVisibility() == View.VISIBLE) {
+            linearLayout.setVisibility(View.GONE);
+            imageView.setImageResource(R.drawable.expand);
+        }
+    }
 }
