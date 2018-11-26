@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/new_inspection_passing_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="4dp"
+    android:animateLayoutChanges="true"
+    android:layoutDirection="rtl"
+    app:layout_collapseMode="parallax">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/afterpass"
+                    android:textSize="@dimen/boldtext"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/passing_card_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/expand" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/passing_card_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/first"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/note"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/passing_card_et_first_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/second"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/note"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_et_second_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/third"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/note"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_et_third_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/forth"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/lining"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_et_forth_lining"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/reflections"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_forth_et_reflections"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/uppersigns"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_forth_et_upper_signs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/floorsigns"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_forth_et_floor_signs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/fifth"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_fifth_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/sixth"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/safespace"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_sixth_et_safe_spaces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/randometurn"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_sixth_et_randoum_turn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/weathereffect"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/passing_card_sixth_et_weather_effect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/form_et_background"
+                    android:inputType="textMultiLine"
+                    android:padding="4dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/camera" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.v7.widget.CardView>

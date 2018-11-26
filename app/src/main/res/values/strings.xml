@@ -1,16 +1,17 @@
 <resources>
-    <string name="app_name">Grblt Ins</string>
+    <string name="app_name">GARBLT INS</string>
     //form label strings
     <string name="report">تقرير فحص السلامه</string>
     <string name="wayname">على طريق</string>
     <string name="waynum">طريق رقم</string>
     <string-array name="waynumbers">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item>١</item>
+        <item>٢</item>
+        <item>٣</item>
+        <item>٤</item>
+        <item>٥</item>
+        <item>٦</item>
+        <item>٧</item>
     </string-array>
     <string name="engname">القائم بالمرور</string>
     <string name="visit_date">تاريخ التفتيش</string>
@@ -53,4 +54,26 @@
     <string name="injurnum">عددالجرحى</string>
     <string name="afterpass">بعد المرور على الطريق</string>
     <string name="first">أولا التصميم الهندسى للطريق</string>
+    <string name="second">ثانيا المنحنيات الأفقيه</string>
+    <string name="third">ثالثا حاله سطح الرصف</string>
+    <string name="forth">رابعا وسائل التحكم المرورى</string>
+    <string name="lining">1- التخطيط</string>
+    <string name="reflections">٢-العواكس</string>
+    <string name="uppersigns">٣-العلامات العلويه</string>
+    <string name="floorsigns">٤-العلامات الأرضيه</string>
+    <string name="fifth">خامسا الدخول والخروج </string>
+    <string name="sixth">سادسا حاله الامان فى الطريق</string>
+    <string name="safespace">مسافات الامان الجانبيه</string>
+    <string name="randometurn">الدورانات العشوائيه</string>
+    <string name="weathereffect">تأثير العوامل الجويه</string>
+    <string name="note">ملاحظات</string>
+    <string name="advices">التوصيات</string>
+    <string name="shortterm">الحل على المدى القصير</string>
+    <string name="one">١</string>
+    <string name="two">٢</string>
+    <string name="three">٣</string>
+    <string name="four">٤</string>
+    <string name="five">٥</string>
+    <string name="longterm">الحل على المدى الطويل</string>
+
 </resources>
