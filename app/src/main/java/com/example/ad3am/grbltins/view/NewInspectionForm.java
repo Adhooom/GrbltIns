@@ -2,6 +2,7 @@ package com.example.ad3am.grbltins.view;
 
 import android.app.DatePickerDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -88,6 +89,25 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_new_inspection_form);
         init();
         getData();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        NewInspectionForm.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void init() {
