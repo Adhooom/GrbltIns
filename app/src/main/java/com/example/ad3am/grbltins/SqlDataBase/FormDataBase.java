@@ -11,8 +11,7 @@ public class FormDataBase {
     private FormDataBase(Context context) {
         helper = new FormDbHelper(context);
     }
-    public long insert(String wayNam,
-            String wayNum, String date, String area, String roadType, String roadImportants,
+    public long insert(String wayNam, String wayNum, String date, String area, String roadType, String roadImportants,
             String roadExplanition, String floorSign, String upperSign, String actualSpeed, String designSpeed,
             String trafficReport, String progressOperation, String kmLocation, String accidentNum, String killedNum,
             String injuryNum, String firstNote, String secondNote, String thirdNotes,
@@ -33,7 +32,7 @@ public class FormDataBase {
         values.put(FormDbHelper.COLUMN_ROAD_EXPLANATION,roadExplanition);
         values.put(FormDbHelper.COLUMN_FLOOR_SIGN,floorSign);
         values.put(FormDbHelper.COLUMN_UPPER_SIGN,upperSign);
-        values.put(FormDbHelper.COLUMN_ACTUAL_SPEED,actualSpeed;
+        values.put(FormDbHelper.COLUMN_ACTUAL_SPEED,actualSpeed);
         values.put(FormDbHelper.COLUMN_DESIGN_SPEED,designSpeed);
         values.put(FormDbHelper.COLUMN_TRAFFIC_REPORT,trafficReport);
         values.put(FormDbHelper.COLUMN_PROGRESS_OPERATION,progressOperation);

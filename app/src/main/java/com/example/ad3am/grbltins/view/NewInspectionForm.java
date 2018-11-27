@@ -207,7 +207,15 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         String longTermFour = advicesCardLongTermFour.getText().toString();
         String longTermFive = advicesCardLongTermFive.getText().toString();
 
-        long id = formDataBase.insert();
+        long id = formDataBase.insert(wayName,wayNum,date,area,roadType,roadImportants,
+                roadExplanition, floorSign,upperSign,actualSpeed,designSpeed,
+                trafficReport,progressOperation,kmLocation,accidentNum,killedNum,
+                injuryNum,firstNote,secondNote,thirdNotes,
+                liningNote,reflectionNote, upperSignsNotes,floorSignsNotes,
+                fifthNote,safeSpaces,randomTurns,weatherEffect,
+                shortTermOne,shortTermTwo,shortTermThree,shortTermFour,
+                shortTermFive,longTermOne,longTermTwo,longTermThree,
+                longTermFour,longTermFive);
 
     }
 
