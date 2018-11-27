@@ -12,12 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ad3am.grbltins.R;
 import com.example.ad3am.grbltins.SqlDataBase.FormDataBase;
@@ -26,6 +28,8 @@ import com.example.ad3am.grbltins.model.NewInspectionFormBojo;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class NewInspectionForm extends AppCompatActivity implements View.OnClickListener {
     //report card elements
@@ -82,6 +86,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     EditText advicesCardLongTermThree;
     EditText advicesCardLongTermFour;
     EditText advicesCardLongTermFive;
+    Button save;
 
     FormDataBase formDataBase;
 
@@ -91,7 +96,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_inspection_form);
         init();
-        getData();
+
 
     }
 
@@ -158,11 +163,12 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         advicesCardLongTermFour = findViewById(R.id.advices_card_et_longterm_four);
         advicesCardLongTermFive = findViewById(R.id.advices_card_et_longterm_five);
 
+        save=findViewById(R.id.new_inspection_save_btn);
 
         initSpinnersDialog();
     }
 
-    public void getData() {
+    public void insertData() {
         //first card
         String wayName = reportCardWayNameEt.getText().toString();
         String wayNum = reportCardRoadNumSpinner.getSelectedItem().toString();
@@ -217,6 +223,8 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
                 shortTermFive,longTermOne,longTermTwo,longTermThree,
                 longTermFour,longTermFive);
 
+        Log.i("id", String.valueOf(id));
+
     }
 
     @Override
@@ -240,6 +248,11 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
                     break;
                 case R.id.advices_card_arrow:
                     arrowFunction(mAdvicesCardLinearLayout, advicesCardArrow);
+                    break;
+                case R.id.new_inspection_save_btn:
+                    insertData();
+                    Log.i("inserted","successful");
+                    
                     break;
             }
         } catch (Exception e) {

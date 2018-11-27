@@ -20,7 +20,15 @@
 
         <include layout="@layout/passing_card" />
 
-        <include layout="@layout/advices_card"/>
+        <include layout="@layout/advices_card" />
+
+        <Button
+            android:id="@+id/new_inspection_save_btn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_background"
+            android:text="@string/save" />
 
 
     </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.ad3am.grbltins.SqlDataBase;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class FormDbHelper extends SQLiteOpenHelper {
 
@@ -100,6 +101,7 @@ public class FormDbHelper extends SQLiteOpenHelper {
 
     public FormDbHelper(Context context) {
         super(context,TABLE_NAME ,null, DATABASE_VERSION);
+        Log.i("Helper", "on create called");
     }
 
     @Override

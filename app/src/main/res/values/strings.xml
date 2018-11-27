@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">GARBLT INS</string>
+    <string name="save">save</string>
     //form label strings
     <string name="report">تقرير فحص السلامه</string>
     <string name="wayname">على طريق</string>
