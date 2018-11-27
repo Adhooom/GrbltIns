@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.ad3am.grbltins.R;
+import com.example.ad3am.grbltins.SqlDataBase.FormDataBase;
 import com.example.ad3am.grbltins.model.NewInspectionFormBojo;
 
 import java.text.SimpleDateFormat;
@@ -82,6 +83,8 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     EditText advicesCardLongTermFour;
     EditText advicesCardLongTermFive;
 
+    FormDataBase formDataBase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,26 +92,9 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_new_inspection_form);
         init();
         getData();
+
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        NewInspectionForm.this.finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
 
     public void init() {
         //first card
@@ -221,6 +207,8 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         String longTermFour = advicesCardLongTermFour.getText().toString();
         String longTermFive = advicesCardLongTermFive.getText().toString();
 
+        long id = formDataBase.insert();
+
     }
 
     @Override
@@ -308,7 +296,6 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
 
     }
 
-
     private void arrowFunction(LinearLayout linearLayout, ImageView imageView) {
         if (linearLayout.getVisibility() == View.GONE) {
             linearLayout.setVisibility(View.VISIBLE);
@@ -317,5 +304,24 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
             linearLayout.setVisibility(View.GONE);
             imageView.setImageResource(R.drawable.expand);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        NewInspectionForm.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
