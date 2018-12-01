@@ -1,40 +1,52 @@
 package com.example.ad3am.grbltins;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity       {
-    ImageView collapse;
-    CardView reportcard;
+import com.example.ad3am.grbltins.SqlDataBase.FormDataBase;
+import com.example.ad3am.grbltins.view.NewInspectionForm;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Button insert , view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_inspection_form);
-//
-//        reportcard = findViewById(R.id.form_card_report);
-//        collapse = findViewById(R.id.form_iv_collaps);
-//        collapse.setOnClickListener(this);
-    }
-
-//    public void onClick(View view){
-//        if (R.id.form_iv_collaps==view.getId()){
-//            ViewGroup.LayoutParams params = reportcard.getLayoutParams();
-//            if (params.height == ViewGroup.LayoutParams.WRAP_CONTENT){
-//                params.height = 100;
-//                reportcard.setLayoutParams(params);
-//                collapse.setImageResource(R.drawable.collaps);
-//            }else if (params.height == 100){
-//                params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                reportcard.setLayoutParams(params);
-//                collapse.setImageResource(R.drawable.expand);
-//            }
-//        }
-//    }
+        setContentView(R.layout.activity_main);
+        insert = findViewById(R.id.main_activity_insert_btn);
+        view = findViewById(R.id.main_activity_view_btn);
+        insert.setOnClickListener(this);
+        view.setOnClickListener(this);
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+        case R.id.main_activity_insert_btn:
+            Intent intent = new Intent(this, NewInspectionForm.class);
+            startActivity(intent);
+            break;
+            case R.id.main_activity_view_btn:
+                FormDataBase db = new FormDataBase(this);
+                List names = db.view();
+                for (int i = 0; i<names.size() ; i++ ){
+                    Log.i("data","coloum"+ names.get(i));
+                }
+
+
+        }
+
+
+    }
+}
 

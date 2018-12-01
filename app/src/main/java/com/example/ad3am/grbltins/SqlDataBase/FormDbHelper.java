@@ -5,11 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.Random;
+
 public class FormDbHelper extends SQLiteOpenHelper {
 
-    private Context context;
-    private static final String UID = "_id";
-    private static final int DATABASE_VERSION = 1;
+    public static final String ID = "id";
+    private static final int DATABASE_VERSION =2   ;
 
     public static final String DATABASE_NAME = "Form.db";
     public static final String TABLE_NAME = "forms";
@@ -54,8 +55,8 @@ public class FormDbHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE =
             "CREATE TABLE " + FormDbHelper.TABLE_NAME + " (" +
-                    FormDbHelper.UID+ " INTEGER PRIMARY KEY," +
-                    FormDbHelper.COLUMN_WAY_NAME + " TEXT," +
+                    FormDbHelper.ID+ " INTEGER PRIMARY KEY," +
+                    FormDbHelper.COLUMN_WAY_NAME + " TEXT ," +
                     FormDbHelper.COLUMN_WAY_NUMBER + " TEXT,"+
                     FormDbHelper.COLUMN_DATE + " TEXT," +
                     FormDbHelper.COLUMN_AREA + " TEXT ," +
@@ -71,7 +72,7 @@ public class FormDbHelper extends SQLiteOpenHelper {
                     FormDbHelper.COLUMN_KM_LOCATION + " TEXT ," +
                     FormDbHelper.COLUMN_ACCIDENT_NUM + " TEXT ," +
                     FormDbHelper.COLUMN_KILLED_NUM + " TEXT ," +
-                    FormDbHelper.COLUMN_INJURIED_NUM + "TEXT ," +
+                    FormDbHelper.COLUMN_INJURIED_NUM + " TEXT ," +
                     FormDbHelper.COLUMN_FIRST_NOTE + " TEXT ," +
                     FormDbHelper.COLUMN_SECOND_NOTE + " TEXT ," +
                     FormDbHelper.COLUMN_THIRD_NOTE + " TEXT ," +
@@ -98,21 +99,21 @@ public class FormDbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + FormDbHelper.TABLE_NAME;
 
 
-
     public FormDbHelper(Context context) {
         super(context,TABLE_NAME ,null, DATABASE_VERSION);
-        Log.i("Helper", "on create called");
+        Log.i("db", "helper constructor called");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
-
+        Log.i("db", "helper on create called");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(Drop_TABLE);
+        Log.i("db", "helper on updgrade called");
         onCreate(db);
     }
 

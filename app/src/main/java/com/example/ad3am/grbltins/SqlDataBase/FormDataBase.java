@@ -2,15 +2,22 @@ package com.example.ad3am.grbltins.SqlDataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FormDataBase {
     FormDbHelper helper ;
 
-    private FormDataBase(Context context) {
+    public FormDataBase(Context context) {
         helper = new FormDbHelper(context);
+        Log.i("db", " db constructor called");
     }
+
     public long insert(String wayNam, String wayNum, String date, String area, String roadType, String roadImportants,
             String roadExplanition, String floorSign, String upperSign, String actualSpeed, String designSpeed,
             String trafficReport, String progressOperation, String kmLocation, String accidentNum, String killedNum,
@@ -61,10 +68,46 @@ public class FormDataBase {
         values.put(FormDbHelper.COLUMN_LONG_THREE,longTermThree);
         values.put(FormDbHelper.COLUMN_LONG_FOUR,longTermFour);
         values.put(FormDbHelper.COLUMN_LONG_FIVE,longTermFive);
-
         long id = db.insert(FormDbHelper.TABLE_NAME, null, values);
+        Log.i("db", "insert method called " + id);
         return id;
     }
+
+public List view(){
+    SQLiteDatabase db = helper.getReadableDatabase();
+
+// Define a projection that specifies which columns from the database
+// you will actually use after this query.
+    String[] projection = {
+            BaseColumns._ID,
+            FormDbHelper.COLUMN_WAY_NAME,
+            FormDbHelper.COLUMN_WAY_NUMBER
+    };
+//
+//// Filter results WHERE "title" = 'My Title'
+//    String selection = FormDbHelper.COLUMN_NAME_TITLE + " = ?";
+//    String[] selectionArgs = { "My Title" };
+
+// How you want the results sorted in the resulting Cursor
+
+    Cursor cursor = db.query(
+            FormDbHelper.TABLE_NAME,   // The table to query
+            null,             // The array of columns to return (pass null to get all)
+            null,
+            null,
+            null,                   // don't group the rows
+            null,                   // don't filter by row groups
+            null
+    );
+    String[] columnnames = cursor.getColumnNames();
+    List itemIds = new ArrayList<>();
+    while(cursor.moveToNext()) {
+        long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(FormDbHelper.ID));
+        itemIds.add(itemId);
+    }
+    cursor.close();
+    return itemIds;
+}
 
 
 }

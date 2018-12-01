@@ -42,6 +42,60 @@ public class NewInspectionFormBojo {
     String longTermTwo;
     String longTermThree;
     String longTermFour;
+
+    public NewInspectionFormBojo() {
+    }
+
+    public NewInspectionFormBojo(String wayName, String wayNum, String date, String area, String roadType,
+                                 String roadImportants, String roadExplanition, String floorSign, String upperSign,
+                                 String actualSpeed, String designSpeed, String trafficReport, String progressOperation,
+                                 String kmLocation, String accidentNum, String killedNum, String injuryNum, String firstNote,
+                                 String secondNote, String thirdNotes, String liningNote, String reflectionNote,
+                                 String upperSignsNotes, String floorSignsNotes, String fifthNote, String safeSpaces,
+                                 String randomTurns, String weatherEffect, String shortTermOne, String shortTermTwo,
+                                 String shortTermThree, String shortTermFour, String shortTermFive, String longTermOne,
+                                 String longTermTwo, String longTermThree, String longTermFour, String longTermFive) {
+        this.wayName = wayName;
+        this.wayNum = wayNum;
+        this.date = date;
+        this.area = area;
+        this.roadType = roadType;
+        this.roadImportants = roadImportants;
+        this.roadExplanition = roadExplanition;
+        this.floorSign = floorSign;
+        this.upperSign = upperSign;
+        this.actualSpeed = actualSpeed;
+        this.designSpeed = designSpeed;
+        this.trafficReport = trafficReport;
+        this.progressOperation = progressOperation;
+        this.kmLocation = kmLocation;
+        this.accidentNum = accidentNum;
+        this.killedNum = killedNum;
+        this.injuryNum = injuryNum;
+        this.firstNote = firstNote;
+        this.secondNote = secondNote;
+        this.thirdNotes = thirdNotes;
+        this.liningNote = liningNote;
+        this.reflectionNote = reflectionNote;
+        this.upperSignsNotes = upperSignsNotes;
+        this.floorSignsNotes = floorSignsNotes;
+        this.fifthNote = fifthNote;
+        this.safeSpaces = safeSpaces;
+        this.randomTurns = randomTurns;
+        this.weatherEffect = weatherEffect;
+        this.shortTermOne = shortTermOne;
+        this.shortTermTwo = shortTermTwo;
+        this.shortTermThree = shortTermThree;
+        this.shortTermFour = shortTermFour;
+        this.shortTermFive = shortTermFive;
+        this.longTermOne = longTermOne;
+        this.longTermTwo = longTermTwo;
+        this.longTermThree = longTermThree;
+        this.longTermFour = longTermFour;
+        this.longTermFive = longTermFive;
+    }
+
+
     String longTermFive;
     String id;
 

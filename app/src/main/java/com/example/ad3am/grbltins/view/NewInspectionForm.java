@@ -88,18 +88,14 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     EditText advicesCardLongTermFive;
     Button save;
 
-    FormDataBase formDataBase;
-
+    FormDataBase formDataBase = new FormDataBase(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_inspection_form);
         init();
-
-
     }
-
 
     public void init() {
         //first card
@@ -163,68 +159,85 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         advicesCardLongTermFour = findViewById(R.id.advices_card_et_longterm_four);
         advicesCardLongTermFive = findViewById(R.id.advices_card_et_longterm_five);
 
-        save=findViewById(R.id.new_inspection_save_btn);
+        save = findViewById(R.id.new_inspection_save_btn);
+        save.setOnClickListener(this);
 
         initSpinnersDialog();
     }
 
     public void insertData() {
-        //first card
-        String wayName = reportCardWayNameEt.getText().toString();
-        String wayNum = reportCardRoadNumSpinner.getSelectedItem().toString();
-        String date = reportCardDateText.getText().toString();
-        //second card
-        String area = detailsCardAreaSpinner.getSelectedItem().toString();
-        String roadType = detailsCardRoadTypeSpinner.getSelectedItem().toString();
-        String roadImportants = detailsCardRoadImportantsEt.getText().toString();
-        String roadExplanition = detailsCardRoadExplanationEt.getText().toString();
-        String floorSign = detailsCardFloorSignSpinner.getSelectedItem().toString();
-        String upperSign = detailsCardUpperSignSpinner.getSelectedItem().toString();
-        //third card
-        String actualSpeed = informationCardActualSpeedEt.getText().toString();
-        String designSpeed = informationCardSpeedDesignEt.getText().toString();
-        String trafficReport = informationCardTrafficReportEt.getText().toString();
-        String progressOperation = informationCardProgressOperationEt.getText().toString();
-        String kmLocation = informationCardKmLocationEt.getText().toString();
-        String accidentNum = informationCardAccidentNumEt.getText().toString();
-        String killedNum = informationCardKilledNumEt.getText().toString();
-        String injuryNum = informationCardInjuryNumEt.getText().toString();
-        //forth card
-        String firstNote = passingCardFirstNote.getText().toString();
-        String secondNote = passingCardSecondNote.getText().toString();
-        String thirdNotes = passingCardThirdNote.getText().toString();
-        String liningNote = passingCardForthLiningNote.getText().toString();
-        String reflectionNote = passingCardForthReflectionsNote.getText().toString();
-        String upperSignsNotes = passingCardForthUpperSignsNote.getText().toString();
-        String floorSignsNotes = passingCardForthFloorSignsNote.getText().toString();
-        String fifthNote = passingCardFifthNote.getText().toString();
-        String safeSpaces = passingCardsixthSafeSpaces.getText().toString();
-        String randomTurns = passingCardsixthRandoumTurn.getText().toString();
-        String weatherEffect = passingCardsixthWeatherEffect.getText().toString();
-        //fivth card
-        String shortTermOne = advicesCardShortTermOne.getText().toString();
-        String shortTermTwo = advicesCardShortTermTwo.getText().toString();
-        String shortTermThree = advicesCardShortTermThree.getText().toString();
-        String shortTermFour = advicesCardShortTermFour.getText().toString();
-        String shortTermFive = advicesCardShortTermFive.getText().toString();
-        String longTermOne = advicesCardLongTermOne.getText().toString();
-        String longTermTwo = advicesCardLongTermTwo.getText().toString();
-        String longTermThree = advicesCardLongTermThree.getText().toString();
-        String longTermFour = advicesCardLongTermFour.getText().toString();
-        String longTermFive = advicesCardLongTermFive.getText().toString();
+        try {
+            //first card
+            String wayName = reportCardWayNameEt.getText().toString();
+            String wayNum = reportCardRoadNumSpinner.getSelectedItem().toString();
+            String date = reportCardDateText.getText().toString();
+            //second card
+            String area = detailsCardAreaSpinner.getSelectedItem().toString();
+            String roadType = detailsCardRoadTypeSpinner.getSelectedItem().toString();
+            String roadImportants = detailsCardRoadImportantsEt.getText().toString();
+            String roadExplanition = detailsCardRoadExplanationEt.getText().toString();
+            String floorSign = detailsCardFloorSignSpinner.getSelectedItem().toString();
+            String upperSign = detailsCardUpperSignSpinner.getSelectedItem().toString();
+            //third card
+            String actualSpeed = informationCardActualSpeedEt.getText().toString();
+            String designSpeed = informationCardSpeedDesignEt.getText().toString();
+            String trafficReport = informationCardTrafficReportEt.getText().toString();
+            String progressOperation = informationCardProgressOperationEt.getText().toString();
+            String kmLocation = informationCardKmLocationEt.getText().toString();
+            String accidentNum = informationCardAccidentNumEt.getText().toString();
+            String killedNum = informationCardKilledNumEt.getText().toString();
+            String injuryNum = informationCardInjuryNumEt.getText().toString();
+            //forth card
+            String firstNote = passingCardFirstNote.getText().toString();
+            String secondNote = passingCardSecondNote.getText().toString();
+            String thirdNotes = passingCardThirdNote.getText().toString();
+            String liningNote = passingCardForthLiningNote.getText().toString();
+            String reflectionNote = passingCardForthReflectionsNote.getText().toString();
+            String upperSignsNotes = passingCardForthUpperSignsNote.getText().toString();
+            String floorSignsNotes = passingCardForthFloorSignsNote.getText().toString();
+            String fifthNote = passingCardFifthNote.getText().toString();
+            String safeSpaces = passingCardsixthSafeSpaces.getText().toString();
+            String randomTurns = passingCardsixthRandoumTurn.getText().toString();
+            String weatherEffect = passingCardsixthWeatherEffect.getText().toString();
+            //fivth card
+            String shortTermOne = advicesCardShortTermOne.getText().toString();
+            String shortTermTwo = advicesCardShortTermTwo.getText().toString();
+            String shortTermThree = advicesCardShortTermThree.getText().toString();
+            String shortTermFour = advicesCardShortTermFour.getText().toString();
+            String shortTermFive = advicesCardShortTermFive.getText().toString();
+            String longTermOne = advicesCardLongTermOne.getText().toString();
+            String longTermTwo = advicesCardLongTermTwo.getText().toString();
+            String longTermThree = advicesCardLongTermThree.getText().toString();
+            String longTermFour = advicesCardLongTermFour.getText().toString();
+            String longTermFive = advicesCardLongTermFive.getText().toString();
 
-        long id = formDataBase.insert(wayName,wayNum,date,area,roadType,roadImportants,
-                roadExplanition, floorSign,upperSign,actualSpeed,designSpeed,
-                trafficReport,progressOperation,kmLocation,accidentNum,killedNum,
-                injuryNum,firstNote,secondNote,thirdNotes,
-                liningNote,reflectionNote, upperSignsNotes,floorSignsNotes,
-                fifthNote,safeSpaces,randomTurns,weatherEffect,
-                shortTermOne,shortTermTwo,shortTermThree,shortTermFour,
-                shortTermFive,longTermOne,longTermTwo,longTermThree,
-                longTermFour,longTermFive);
-
-        Log.i("id", String.valueOf(id));
-
+            Log.i("insert","data is :" +wayName+ wayNum+ date+ area+ roadType+ roadImportants+
+                    roadExplanition+ floorSign+ upperSign+ actualSpeed+ designSpeed+
+                    trafficReport+ progressOperation+ kmLocation+ accidentNum+ killedNum+
+                    injuryNum+ firstNote+ secondNote+ thirdNotes+
+                    liningNote+ reflectionNote+ upperSignsNotes+ floorSignsNotes+
+                    fifthNote+ safeSpaces+ randomTurns+ weatherEffect+
+                    shortTermOne+ shortTermTwo+ shortTermThree+ shortTermFour+
+                    shortTermFive+ longTermOne+ longTermTwo+ longTermThree+
+                    longTermFour+ longTermFive);
+            long id = formDataBase.insert(wayName, wayNum, date, area, roadType, roadImportants,
+                    roadExplanition, floorSign, upperSign, actualSpeed, designSpeed,
+                    trafficReport, progressOperation, kmLocation, accidentNum, killedNum,
+                    injuryNum, firstNote, secondNote, thirdNotes,
+                    liningNote, reflectionNote, upperSignsNotes, floorSignsNotes,
+                    fifthNote, safeSpaces, randomTurns, weatherEffect,
+                    shortTermOne, shortTermTwo, shortTermThree, shortTermFour,
+                    shortTermFive, longTermOne, longTermTwo, longTermThree,
+                    longTermFour, longTermFive);
+            Log.i("id", "form id "+ id );
+            if (id < 0) {
+                Log.i("id", "insert faild ");
+            } else {
+                Log.i("id", "insert success ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -250,9 +263,12 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
                     arrowFunction(mAdvicesCardLinearLayout, advicesCardArrow);
                     break;
                 case R.id.new_inspection_save_btn:
-                    insertData();
-                    Log.i("inserted","successful");
-                    
+                    try {
+                        insertData();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    finish();
                     break;
             }
         } catch (Exception e) {
