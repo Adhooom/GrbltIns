@@ -4,9 +4,10 @@ import android.support.annotation.MainThread;
 
 import com.example.ad3am.grbltins.MainActivity;
 
-public class NewInspectionFormBojo {
+public class NewInspectionFormPojo {
     String wayName;
     String wayNum;
+    String engName;
     String date;
     String area;
     String roadType;
@@ -42,11 +43,20 @@ public class NewInspectionFormBojo {
     String longTermTwo;
     String longTermThree;
     String longTermFour;
+    String longTermFive;
+    String id;
 
-    public NewInspectionFormBojo() {
+    public NewInspectionFormPojo() {
     }
 
-    public NewInspectionFormBojo(String wayName, String wayNum, String date, String area, String roadType,
+    public NewInspectionFormPojo(String wayName, String wayNum , String engName, String date) {
+        this.wayName = wayName;
+        this.wayNum = wayNum;
+        this.engName=engName;
+        this.date=date;
+    }
+
+    public NewInspectionFormPojo(String wayName, String wayNum, String date, String area, String roadType,
                                  String roadImportants, String roadExplanition, String floorSign, String upperSign,
                                  String actualSpeed, String designSpeed, String trafficReport, String progressOperation,
                                  String kmLocation, String accidentNum, String killedNum, String injuryNum, String firstNote,
@@ -96,8 +106,16 @@ public class NewInspectionFormBojo {
     }
 
 
-    String longTermFive;
-    String id;
+
+
+
+    public String getEngName() {
+        return engName;
+    }
+
+    public void setEngName(String engName) {
+        this.engName = engName;
+    }
 
     public String getId() {
         return id;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/new_inspection_passing_card"
+    android:id="@+id/passing_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="4dp"
@@ -74,7 +74,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                    />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -107,7 +107,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                    />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -140,7 +140,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                    />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -173,7 +173,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                    />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -198,7 +198,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                    />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -215,7 +215,6 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-
                 <EditText
                     android:id="@+id/passing_card_forth_et_upper_signs"
                     android:layout_width="match_parent"
@@ -223,7 +222,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -248,7 +247,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -273,7 +272,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -298,7 +297,6 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-
                 <EditText
                     android:id="@+id/passing_card_sixth_et_safe_spaces"
                     android:layout_width="match_parent"
@@ -306,7 +304,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -331,7 +329,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"
@@ -356,7 +354,7 @@
                     android:layout_marginTop="4dp"
                     android:background="@drawable/form_et_background"
                     android:inputType="textMultiLine"
-                    android:padding="4dp" />
+                />
 
                 <ImageView
                     android:layout_width="200dp"

@@ -1,16 +1,13 @@
 package com.example.ad3am.grbltins.view;
 
 import android.app.DatePickerDialog;
-import android.content.ClipData;
 import android.content.DialogInterface;
-import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,27 +16,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ad3am.grbltins.R;
 import com.example.ad3am.grbltins.SqlDataBase.FormDataBase;
-import com.example.ad3am.grbltins.model.NewInspectionFormBojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static android.widget.Toast.LENGTH_LONG;
-
-public class NewInspectionForm extends AppCompatActivity implements View.OnClickListener {
+public class NewForm extends AppCompatActivity implements View.OnClickListener {
     //report card elements
+    CardView reportCard;
     LinearLayout mReportCardLinearLayout;
     ImageView reportCardArrow;
     EditText reportCardWayNameEt;
     Spinner reportCardRoadNumSpinner;
+    EditText reportCardEngName;
     ImageView reportCardDate;
     TextView reportCardDateText;
     //details card elements
+    CardView detailsCard;
     LinearLayout mDetailsCardLinearLayout;
     ImageView detailsCardArrow;
     Spinner detailsCardAreaSpinner;
@@ -49,6 +45,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     Spinner detailsCardFloorSignSpinner;
     Spinner detailsCardUpperSignSpinner;
     //information card elements
+    CardView informationCard;
     LinearLayout mInformationCardLinearLayout;
     ImageView informationCardArrow;
     EditText informationCardActualSpeedEt;
@@ -60,6 +57,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     EditText informationCardKilledNumEt;
     EditText informationCardInjuryNumEt;
     //passsing card
+    CardView passingCard;
     LinearLayout mPassingCardLinearLayout;
     ImageView passingCardArrow;
     EditText passingCardFirstNote;
@@ -74,6 +72,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     EditText passingCardsixthRandoumTurn;
     EditText passingCardsixthWeatherEffect;
     //advices card
+    CardView advicesCard;
     LinearLayout mAdvicesCardLinearLayout;
     ImageView advicesCardArrow;
     EditText advicesCardShortTermOne;
@@ -98,79 +97,26 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     }
 
     public void init() {
-        //first card
-        mReportCardLinearLayout = findViewById(R.id.report_card_content_layout);
-        reportCardArrow = findViewById(R.id.report_card_arrow);
-        reportCardArrow.setOnClickListener(this);
-        reportCardWayNameEt = findViewById(R.id.report_card_wayname_et);
-        reportCardRoadNumSpinner = findViewById(R.id.report_card_way_num_spinner);
-        reportCardDateText = findViewById(R.id.report_card_date_tv);
-        reportCardDate = findViewById(R.id.new_inspection_report_card_date_iv);
-        reportCardDate.setOnClickListener(this);
-        //second card
-        mDetailsCardLinearLayout = findViewById(R.id.details_card_content_layout);
-        detailsCardArrow = findViewById(R.id.details_card_arrow);
-        detailsCardArrow.setOnClickListener(this);
-        detailsCardAreaSpinner = findViewById(R.id.details_card_spinner_area);
-        detailsCardRoadTypeSpinner = findViewById(R.id.details_card_spinner_road_type);
-        detailsCardRoadImportantsEt = findViewById(R.id.details_card_et_road_importants);
-        detailsCardRoadExplanationEt = findViewById(R.id.details_card_et_road_explanation);
-        detailsCardFloorSignSpinner = findViewById(R.id.details_card_spinner_floor_sign_statue);
-        detailsCardUpperSignSpinner = findViewById(R.id.details_card_spinner_upper_sign_statue);
-        //third card
-        mInformationCardLinearLayout = findViewById(R.id.information_card_content_layout);
-        informationCardArrow = findViewById(R.id.information_card_arrow);
-        informationCardArrow.setOnClickListener(this);
-        informationCardActualSpeedEt = findViewById(R.id.information_card_et_speed_actual);
-        informationCardSpeedDesignEt = findViewById(R.id.information_card_et_speed_design);
-        informationCardTrafficReportEt = findViewById(R.id.information_card_et_traffic_report);
-        informationCardProgressOperationEt = findViewById(R.id.information_card_et_progress_operations);
-        informationCardKmLocationEt = findViewById(R.id.information_card_et_km_location);
-        informationCardAccidentNumEt = findViewById(R.id.information_card_et_accident_num);
-        informationCardKilledNumEt = findViewById(R.id.information_card_et_killed_num);
-        informationCardInjuryNumEt = findViewById(R.id.information_card_et_injurd_num);
-        //forth card
-        mPassingCardLinearLayout = findViewById(R.id.passing_card_content_layout);
-        passingCardArrow = findViewById(R.id.passing_card_arrow);
-        passingCardArrow.setOnClickListener(this);
-        passingCardFirstNote = findViewById(R.id.passing_card_et_first_note);
-        passingCardSecondNote = findViewById(R.id.passing_card_et_second_note);
-        passingCardThirdNote = findViewById(R.id.passing_card_et_third_note);
-        passingCardForthLiningNote = findViewById(R.id.passing_card_et_forth_lining);
-        passingCardForthReflectionsNote = findViewById(R.id.passing_card_forth_et_reflections);
-        passingCardForthUpperSignsNote = findViewById(R.id.passing_card_forth_et_upper_signs);
-        passingCardForthFloorSignsNote = findViewById(R.id.passing_card_forth_et_floor_signs);
-        passingCardFifthNote = findViewById(R.id.passing_card_fifth_note);
-        passingCardsixthSafeSpaces = findViewById(R.id.passing_card_sixth_et_safe_spaces);
-        passingCardsixthRandoumTurn = findViewById(R.id.passing_card_sixth_et_randoum_turn);
-        passingCardsixthWeatherEffect = findViewById(R.id.passing_card_sixth_et_weather_effect);
-        //fivth card
-        mAdvicesCardLinearLayout = findViewById(R.id.advices_card_content_layout);
-        advicesCardArrow = findViewById(R.id.advices_card_arrow);
-        advicesCardArrow.setOnClickListener(this);
-        advicesCardShortTermOne = findViewById(R.id.advices_card_et_shorterm_one);
-        advicesCardShortTermTwo = findViewById(R.id.advices_card_et_shorterm_two);
-        advicesCardShortTermThree = findViewById(R.id.advices_card_et_shorterm_three);
-        advicesCardShortTermFour = findViewById(R.id.advices_card_et_shorterm_four);
-        advicesCardShortTermFive = findViewById(R.id.advices_card_et_shorterm_five);
-        advicesCardLongTermOne = findViewById(R.id.advices_card_et_longterm_one);
-        advicesCardLongTermTwo = findViewById(R.id.advices_card_et_longterm_two);
-        advicesCardLongTermThree = findViewById(R.id.advices_card_et_longterm_three);
-        advicesCardLongTermFour = findViewById(R.id.advices_card_et_longterm_four);
-        advicesCardLongTermFive = findViewById(R.id.advices_card_et_longterm_five);
-
-        save = findViewById(R.id.new_inspection_save_btn);
-        save.setOnClickListener(this);
-
+        initView();
         initSpinnersDialog();
     }
 
     public void insertData() {
         try {
             //first card
+
             String wayName = reportCardWayNameEt.getText().toString();
+            if (wayName.isEmpty())
+                wayName="def";
             String wayNum = reportCardRoadNumSpinner.getSelectedItem().toString();
+            if (wayNum.isEmpty())
+                wayNum="0";
+            String engName = reportCardEngName.getText().toString();
+            if (engName.isEmpty())
+                engName="def";
             String date = reportCardDateText.getText().toString();
+            if (date.isEmpty())
+                date="def";
             //second card
             String area = detailsCardAreaSpinner.getSelectedItem().toString();
             String roadType = detailsCardRoadTypeSpinner.getSelectedItem().toString();
@@ -211,29 +157,30 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
             String longTermFour = advicesCardLongTermFour.getText().toString();
             String longTermFive = advicesCardLongTermFive.getText().toString();
 
-            Log.i("insert","data is :" +wayName+ wayNum+ date+ area+ roadType+ roadImportants+
-                    roadExplanition+ floorSign+ upperSign+ actualSpeed+ designSpeed+
-                    trafficReport+ progressOperation+ kmLocation+ accidentNum+ killedNum+
-                    injuryNum+ firstNote+ secondNote+ thirdNotes+
-                    liningNote+ reflectionNote+ upperSignsNotes+ floorSignsNotes+
-                    fifthNote+ safeSpaces+ randomTurns+ weatherEffect+
-                    shortTermOne+ shortTermTwo+ shortTermThree+ shortTermFour+
-                    shortTermFive+ longTermOne+ longTermTwo+ longTermThree+
-                    longTermFour+ longTermFive);
-            long id = formDataBase.insert(wayName, wayNum, date, area, roadType, roadImportants,
-                    roadExplanition, floorSign, upperSign, actualSpeed, designSpeed,
-                    trafficReport, progressOperation, kmLocation, accidentNum, killedNum,
-                    injuryNum, firstNote, secondNote, thirdNotes,
-                    liningNote, reflectionNote, upperSignsNotes, floorSignsNotes,
-                    fifthNote, safeSpaces, randomTurns, weatherEffect,
-                    shortTermOne, shortTermTwo, shortTermThree, shortTermFour,
-                    shortTermFive, longTermOne, longTermTwo, longTermThree,
-                    longTermFour, longTermFive);
-            Log.i("id", "form id "+ id );
+            Log.i("insert", "data is :" + wayName + wayNum + engName + date + area + roadType + roadImportants +
+                    roadExplanition + floorSign + upperSign + actualSpeed + designSpeed +
+                    trafficReport + progressOperation + kmLocation + accidentNum + killedNum +
+                    injuryNum + firstNote + secondNote + thirdNotes +
+                    liningNote + reflectionNote + upperSignsNotes + floorSignsNotes +
+                    fifthNote + safeSpaces + randomTurns + weatherEffect +
+                    shortTermOne + shortTermTwo + shortTermThree + shortTermFour +
+                    shortTermFive + longTermOne + longTermTwo + longTermThree +
+                    longTermFour + longTermFive);
+            long id = formDataBase.insert(wayName, wayNum, engName, date);
+// long id = formDataBase.insert(wayName, wayNum, date, area, roadType, roadImportants,
+//                    roadExplanition, floorSign, upperSign, actualSpeed, designSpeed,
+//                    trafficReport, progressOperation, kmLocation, accidentNum, killedNum,
+//                    injuryNum, firstNote, secondNote, thirdNotes,
+//                    liningNote, reflectionNote, upperSignsNotes, floorSignsNotes,
+//                    fifthNote, safeSpaces, randomTurns, weatherEffect,
+//                    shortTermOne, shortTermTwo, shortTermThree, shortTermFour,
+//                    shortTermFive, longTermOne, longTermTwo, longTermThree,
+//                    longTermFour, longTermFive);
+            Log.i("insert id", "form id " + id);
             if (id < 0) {
-                Log.i("id", "insert faild ");
+                Log.i("insert", "insert faild ");
             } else {
-                Log.i("id", "insert success ");
+                Log.i("insert", "insert success ");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -244,20 +191,35 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         try {
             switch (v.getId()) {
+                case R.id.report_card:
+                    arrowFunction(mReportCardLinearLayout, reportCardArrow);
+                    break;
                 case R.id.report_card_arrow:
                     arrowFunction(mReportCardLinearLayout, reportCardArrow);
                     break;
                 case R.id.new_inspection_report_card_date_iv:
                     dateDialog();
                     break;
+                case R.id.details_card:
+                    arrowFunction(mDetailsCardLinearLayout, detailsCardArrow);
+                    break;
                 case R.id.details_card_arrow:
                     arrowFunction(mDetailsCardLinearLayout, detailsCardArrow);
+                    break;
+                case R.id.information_card:
+                    arrowFunction(mInformationCardLinearLayout, informationCardArrow);
                     break;
                 case R.id.information_card_arrow:
                     arrowFunction(mInformationCardLinearLayout, informationCardArrow);
                     break;
+                case R.id.passing_card:
+                    arrowFunction(mPassingCardLinearLayout, passingCardArrow);
+                    break;
                 case R.id.passing_card_arrow:
                     arrowFunction(mPassingCardLinearLayout, passingCardArrow);
+                    break;
+                case R.id.advices_card:
+                    arrowFunction(mAdvicesCardLinearLayout, advicesCardArrow);
                     break;
                 case R.id.advices_card_arrow:
                     arrowFunction(mAdvicesCardLinearLayout, advicesCardArrow);
@@ -299,6 +261,83 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void initView() {
+        //first card
+        reportCard = findViewById(R.id.report_card);
+        mReportCardLinearLayout = findViewById(R.id.report_card_content_layout);
+        reportCardArrow = findViewById(R.id.report_card_arrow);
+        reportCard.setOnClickListener(this);
+        reportCardArrow.setOnClickListener(this);
+        reportCardWayNameEt = findViewById(R.id.report_card_wayname_et);
+        reportCardRoadNumSpinner = findViewById(R.id.report_card_way_num_spinner);
+        reportCardEngName = findViewById(R.id.report_card_eng_name_et);
+        reportCardDateText = findViewById(R.id.report_card_date_tv);
+        reportCardDate = findViewById(R.id.new_inspection_report_card_date_iv);
+        reportCardDate.setOnClickListener(this);
+        //second card
+        detailsCard = findViewById(R.id.details_card);
+        mDetailsCardLinearLayout = findViewById(R.id.details_card_content_layout);
+        detailsCardArrow = findViewById(R.id.details_card_arrow);
+        detailsCard.setOnClickListener(this);
+        detailsCardArrow.setOnClickListener(this);
+        detailsCardAreaSpinner = findViewById(R.id.details_card_spinner_area);
+        detailsCardRoadTypeSpinner = findViewById(R.id.details_card_spinner_road_type);
+        detailsCardRoadImportantsEt = findViewById(R.id.details_card_et_road_importants);
+        detailsCardRoadExplanationEt = findViewById(R.id.details_card_et_road_explanation);
+        detailsCardFloorSignSpinner = findViewById(R.id.details_card_spinner_floor_sign_statue);
+        detailsCardUpperSignSpinner = findViewById(R.id.details_card_spinner_upper_sign_statue);
+        //third card
+        informationCard = findViewById(R.id.information_card);
+        mInformationCardLinearLayout = findViewById(R.id.information_card_content_layout);
+        informationCardArrow = findViewById(R.id.information_card_arrow);
+        informationCard.setOnClickListener(this);
+        informationCardArrow.setOnClickListener(this);
+        informationCardActualSpeedEt = findViewById(R.id.information_card_et_speed_actual);
+        informationCardSpeedDesignEt = findViewById(R.id.information_card_et_speed_design);
+        informationCardTrafficReportEt = findViewById(R.id.information_card_et_traffic_report);
+        informationCardProgressOperationEt = findViewById(R.id.information_card_et_progress_operations);
+        informationCardKmLocationEt = findViewById(R.id.information_card_et_km_location);
+        informationCardAccidentNumEt = findViewById(R.id.information_card_et_accident_num);
+        informationCardKilledNumEt = findViewById(R.id.information_card_et_killed_num);
+        informationCardInjuryNumEt = findViewById(R.id.information_card_et_injurd_num);
+        //forth card
+        passingCard = findViewById(R.id.passing_card);
+        passingCard.setOnClickListener(this);
+        mPassingCardLinearLayout = findViewById(R.id.passing_card_content_layout);
+        passingCardArrow = findViewById(R.id.passing_card_arrow);
+        passingCardArrow.setOnClickListener(this);
+        passingCardFirstNote = findViewById(R.id.passing_card_et_first_note);
+        passingCardSecondNote = findViewById(R.id.passing_card_et_second_note);
+        passingCardThirdNote = findViewById(R.id.passing_card_et_third_note);
+        passingCardForthLiningNote = findViewById(R.id.passing_card_et_forth_lining);
+        passingCardForthReflectionsNote = findViewById(R.id.passing_card_forth_et_reflections);
+        passingCardForthUpperSignsNote = findViewById(R.id.passing_card_forth_et_upper_signs);
+        passingCardForthFloorSignsNote = findViewById(R.id.passing_card_forth_et_floor_signs);
+        passingCardFifthNote = findViewById(R.id.passing_card_fifth_note);
+        passingCardsixthSafeSpaces = findViewById(R.id.passing_card_sixth_et_safe_spaces);
+        passingCardsixthRandoumTurn = findViewById(R.id.passing_card_sixth_et_randoum_turn);
+        passingCardsixthWeatherEffect = findViewById(R.id.passing_card_sixth_et_weather_effect);
+        //fivth card
+        advicesCard = findViewById(R.id.advices_card);
+        mAdvicesCardLinearLayout = findViewById(R.id.advices_card_content_layout);
+        advicesCardArrow = findViewById(R.id.advices_card_arrow);
+        advicesCard.setOnClickListener(this);
+        advicesCardArrow.setOnClickListener(this);
+        advicesCardShortTermOne = findViewById(R.id.advices_card_et_shorterm_one);
+        advicesCardShortTermTwo = findViewById(R.id.advices_card_et_shorterm_two);
+        advicesCardShortTermThree = findViewById(R.id.advices_card_et_shorterm_three);
+        advicesCardShortTermFour = findViewById(R.id.advices_card_et_shorterm_four);
+        advicesCardShortTermFive = findViewById(R.id.advices_card_et_shorterm_five);
+        advicesCardLongTermOne = findViewById(R.id.advices_card_et_longterm_one);
+        advicesCardLongTermTwo = findViewById(R.id.advices_card_et_longterm_two);
+        advicesCardLongTermThree = findViewById(R.id.advices_card_et_longterm_three);
+        advicesCardLongTermFour = findViewById(R.id.advices_card_et_longterm_four);
+        advicesCardLongTermFive = findViewById(R.id.advices_card_et_longterm_five);
+
+        save = findViewById(R.id.new_inspection_save_btn);
+        save.setOnClickListener(this);
     }
 
     private void initSpinnersDialog() {
@@ -350,7 +389,7 @@ public class NewInspectionForm extends AppCompatActivity implements View.OnClick
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        NewInspectionForm.this.finish();
+                        NewForm.this.finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

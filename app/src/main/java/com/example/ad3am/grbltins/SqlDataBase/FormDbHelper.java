@@ -4,20 +4,22 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Random;
 
 public class FormDbHelper extends SQLiteOpenHelper {
 
     public static final String ID = "id";
-    private static final int DATABASE_VERSION =2   ;
-
+    private static final int DATABASE_VERSION = 1 ;
+    private Context context;
     public static final String DATABASE_NAME = "Form.db";
     public static final String TABLE_NAME = "forms";
     public static final String COLUMN_WAY_NAME = "wayname";
     public static final String COLUMN_WAY_NUMBER = "waynum";
+    public static final String COLUMN_ENG_NAME = "engName";
     public static final String COLUMN_DATE = "date";
-    public static final String COLUMN_AREA = "are";
+    public static final String COLUMN_AREA = "area";
     public static final String COLUMN_ROAD_TYBE = "roadtype";
     public static final String COLUMN_ROAD_IMPORTANTS = "roadImportants";
     public static final String COLUMN_ROAD_EXPLANATION = "roadExplanation";
@@ -56,44 +58,51 @@ public class FormDbHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE =
             "CREATE TABLE " + FormDbHelper.TABLE_NAME + " (" +
                     FormDbHelper.ID+ " INTEGER PRIMARY KEY," +
-                    FormDbHelper.COLUMN_WAY_NAME + " TEXT ," +
+                    FormDbHelper.COLUMN_WAY_NAME + " TEXT ,"+
                     FormDbHelper.COLUMN_WAY_NUMBER + " TEXT,"+
-                    FormDbHelper.COLUMN_DATE + " TEXT," +
-                    FormDbHelper.COLUMN_AREA + " TEXT ," +
-                    FormDbHelper.COLUMN_ROAD_TYBE + " TEXT ," +
-                    FormDbHelper.COLUMN_ROAD_IMPORTANTS + " TEXT ," +
-                    FormDbHelper.COLUMN_ROAD_EXPLANATION + " TEXT ," +
-                    FormDbHelper.COLUMN_FLOOR_SIGN + " TEXT ," +
-                    FormDbHelper.COLUMN_UPPER_SIGN + " TEXT ," +
-                    FormDbHelper.COLUMN_ACTUAL_SPEED + " TEXT ," +
-                    FormDbHelper.COLUMN_DESIGN_SPEED + " TEXT ," +
-                    FormDbHelper.COLUMN_TRAFFIC_REPORT + " TEXT ," +
-                    FormDbHelper.COLUMN_PROGRESS_OPERATION + " TEXT ," +
-                    FormDbHelper.COLUMN_KM_LOCATION + " TEXT ," +
-                    FormDbHelper.COLUMN_ACCIDENT_NUM + " TEXT ," +
-                    FormDbHelper.COLUMN_KILLED_NUM + " TEXT ," +
-                    FormDbHelper.COLUMN_INJURIED_NUM + " TEXT ," +
-                    FormDbHelper.COLUMN_FIRST_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_SECOND_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_THIRD_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_LINING_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_REFLECTION_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_UPPER_SIGNS_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_FLOOR_SIGNS_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_FIFTH_NOTE + " TEXT ," +
-                    FormDbHelper.COLUMN_SAFE_SPACES + " TEXT ," +
-                    FormDbHelper.COLUMN_RANDOM_TURNS + " TEXT ," +
-                    FormDbHelper.COLUMN_WEATHER_EFFECT + " TEXT ," +
-                    FormDbHelper.COLUMN_SHORT_ONE + " TEXT ," +
-                    FormDbHelper.COLUMN_SHORT_TWO + " TEXT ," +
-                    FormDbHelper.COLUMN_SHORT_THREE + " TEXT ," +
-                    FormDbHelper.COLUMN_SHORT_FOUR + " TEXT ," +
-                    FormDbHelper.COLUMN_SHORT_FIVE + " TEXT ," +
-                    FormDbHelper.COLUMN_LONG_ONE + " TEXT ," +
-                    FormDbHelper.COLUMN_LONG_TWO + " TEXT ," +
-                    FormDbHelper.COLUMN_LONG_THREE + " TEXT ," +
-                    FormDbHelper.COLUMN_LONG_FOUR + " TEXT ," +
-                    FormDbHelper.COLUMN_LONG_FIVE + " TEXT)";
+                    FormDbHelper.COLUMN_ENG_NAME + " TEXT,"+
+                    FormDbHelper.COLUMN_DATE + " TEXT)";
+//private static final String CREATE_TABLE =
+//            "CREATE TABLE " + FormDbHelper.TABLE_NAME + " (" +
+//                    FormDbHelper.ID+ " INTEGER PRIMARY KEY," +
+//                    FormDbHelper.COLUMN_WAY_NAME + " TEXT ," +
+//                    FormDbHelper.COLUMN_WAY_NUMBER + " TEXT,"+
+//                    FormDbHelper.COLUMN_DATE + " TEXT," +
+//                    FormDbHelper.COLUMN_AREA + " TEXT ," +
+//                    FormDbHelper.COLUMN_ROAD_TYBE + " TEXT ," +
+//                    FormDbHelper.COLUMN_ROAD_IMPORTANTS + " TEXT ," +
+//                    FormDbHelper.COLUMN_ROAD_EXPLANATION + " TEXT ," +
+//                    FormDbHelper.COLUMN_FLOOR_SIGN + " TEXT ," +
+//                    FormDbHelper.COLUMN_UPPER_SIGN + " TEXT ," +
+//                    FormDbHelper.COLUMN_ACTUAL_SPEED + " TEXT ," +
+//                    FormDbHelper.COLUMN_DESIGN_SPEED + " TEXT ," +
+//                    FormDbHelper.COLUMN_TRAFFIC_REPORT + " TEXT ," +
+//                    FormDbHelper.COLUMN_PROGRESS_OPERATION + " TEXT ," +
+//                    FormDbHelper.COLUMN_KM_LOCATION + " TEXT ," +
+//                    FormDbHelper.COLUMN_ACCIDENT_NUM + " TEXT ," +
+//                    FormDbHelper.COLUMN_KILLED_NUM + " TEXT ," +
+//                    FormDbHelper.COLUMN_INJURIED_NUM + " TEXT ," +
+//                    FormDbHelper.COLUMN_FIRST_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_SECOND_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_THIRD_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_LINING_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_REFLECTION_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_UPPER_SIGNS_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_FLOOR_SIGNS_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_FIFTH_NOTE + " TEXT ," +
+//                    FormDbHelper.COLUMN_SAFE_SPACES + " TEXT ," +
+//                    FormDbHelper.COLUMN_RANDOM_TURNS + " TEXT ," +
+//                    FormDbHelper.COLUMN_WEATHER_EFFECT + " TEXT ," +
+//                    FormDbHelper.COLUMN_SHORT_ONE + " TEXT ," +
+//                    FormDbHelper.COLUMN_SHORT_TWO + " TEXT ," +
+//                    FormDbHelper.COLUMN_SHORT_THREE + " TEXT ," +
+//                    FormDbHelper.COLUMN_SHORT_FOUR + " TEXT ," +
+//                    FormDbHelper.COLUMN_SHORT_FIVE + " TEXT ," +
+//                    FormDbHelper.COLUMN_LONG_ONE + " TEXT ," +
+//                    FormDbHelper.COLUMN_LONG_TWO + " TEXT ," +
+//                    FormDbHelper.COLUMN_LONG_THREE + " TEXT ," +
+//                    FormDbHelper.COLUMN_LONG_FOUR + " TEXT ," +
+//                    FormDbHelper.COLUMN_LONG_FIVE + " TEXT)";
 
     private static final String Drop_TABLE =
             "DROP TABLE IF EXISTS " + FormDbHelper.TABLE_NAME;
@@ -101,24 +110,22 @@ public class FormDbHelper extends SQLiteOpenHelper {
 
     public FormDbHelper(Context context) {
         super(context,TABLE_NAME ,null, DATABASE_VERSION);
+        this.context = context;
         Log.i("db", "helper constructor called");
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
-        Log.i("db", "helper on create called");
+        Log.i("db", "database created");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(Drop_TABLE);
+        Toast.makeText(context, "on create called", Toast.LENGTH_LONG).show();
         Log.i("db", "helper on updgrade called");
         onCreate(db);
     }
 
-    @Override
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onDowngrade(db, oldVersion, newVersion);
-    }
 }
